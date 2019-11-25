@@ -1,0 +1,129 @@
+<!-- <div style="text-align: center;">
+    <div class="example-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef> Weight </th>
+                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+</div> -->
+
+
+<mat-card style="width: 80%;margin: auto;margin-top: 2%;">
+    <div style="display: flex;justify-content: space-between;">
+        <mat-card-title>To Do List</mat-card-title>
+        <button mat-button>
+            <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="openDialog()"></mat-icon> -->
+            <i class="material-icons" (click)="openDialog()">add</i>
+        </button>
+    </div>
+
+    <mat-card-content>
+        <mat-selection-list #tasks>
+            <!-- <div>
+            <div *ngIf="true; else elseBlock"> -->
+                <!-- <h3> No Task</h3> -->
+                <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource">
+            
+                        <ng-container matColumnDef="taskName">
+                            <th mat-header-cell *matHeaderCellDef> Task Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.taskName}} </td>
+                        </ng-container>
+            
+                        <!-- Weight Column -->
+                        <ng-container matColumnDef="priority">
+                            <th mat-header-cell *matHeaderCellDef> Priority </th>
+                            <td mat-cell *matCellDef="let element"> {{element.priority}} </td>
+                        </ng-container>
+            
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="startDate">
+                            <th mat-header-cell *matHeaderCellDef> Start Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.startDate | date: 'dd/MM/yyyy'}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="endDate">
+                            <th mat-header-cell *matHeaderCellDef> End Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.endDate | date: 'dd/MM/yyyy'}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="comments">
+                            <th mat-header-cell *matHeaderCellDef> Comment </th>
+                            <td mat-cell *matCellDef="let element"> {{element.comments}} </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="actions">
+                            <th mat-header-cell *matHeaderCellDef> Action </th>
+                            <td mat-cell *matCellDef="let row; let i = index"><button><i class="material-icons" (click)="editTask(row,i)">edit</i></button>
+                                <button><i class="material-icons" (click)="deleteTask(row._id,row.taskName,i)">delete</i></button></td>
+                        </ng-container>
+            
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                <!-- </div>            
+                   
+                </div> -->
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+            </div>
+            <!-- </div> -->
+        </mat-selection-list>
+    </mat-card-content>
+</mat-card>
+
+<!--<ng-template #elseBlock>
+     <mat-list-option *ngFor="let task of taskList">
+        {{task}} | async | slice: a:b
+    </mat-list-option> 
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef> Weight </th>
+                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" (page)="changePage($event)" showFirstLastButtons></mat-paginator>
+    </div>
+</ng-template>-->

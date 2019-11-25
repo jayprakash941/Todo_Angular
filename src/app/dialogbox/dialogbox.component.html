@@ -1,0 +1,84 @@
+<mat-card style="width: 90%;">
+    <mat-card-title>Task</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" style="width: -webkit-fill-available;">
+            <div>
+                <!-- <input type="text" formControlName="_id"> -->
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <input type="text" matInput formControlName="taskName" class="form-control" required>
+                    <mat-label>Task Name</mat-label>
+                    <mat-error *ngIf="taskForm.get('taskName').hasError('required')">
+                        You must enter a value
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Priority</mat-label>
+                    <mat-select formControlName="priority" required>
+                        <mat-option *ngFor="let priority of priorities" [value]="priority.value">
+                            {{priority.title}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="taskForm.get('priority').hasError('required')">
+                        You must select a value
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Priority</mat-label>
+                        <select matNativeControl formControlName="priority" required>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                        <mat-error *ngIf="taskForm.get('priority').hasError('required')">
+                            You must select a value
+                        </mat-error>
+                    </mat-form-field> -->
+            </div>
+
+            <!-- <mat-form-field appearance="outline">
+                    <input type="text" matInput formControlName="emailId" class="form-control">
+                    <mat-label>Email ID</mat-label>
+                    <mat-error *ngIf="taskForm.get('emailId').hasError('required')">
+                        You must enter a value
+                    </mat-error>
+                </mat-form-field> -->
+
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <input #startDate matInput [matDatepicker]="dp3" formControlName="startDate" readonly placeholder="startDate"
+                 (dateInput)="startDateChange(startDate.value)" required>
+                <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                <mat-error *ngIf="taskForm.get('startDate').hasError('required')">
+                    You must enter a value
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <input matInput [min]="minDate" [matDatepicker]="dp4" formControlName="endDate" readonly placeholder="endDate" required>
+                <mat-datepicker-toggle matSuffix [for]="dp4" [disabled]="isDisabled"></mat-datepicker-toggle>
+                <mat-datepicker #dp4 disabled="false"></mat-datepicker>
+                <mat-error *ngIf="taskForm.get('endDate').hasError('required')">
+                    You must enter a value
+                </mat-error>
+            </mat-form-field>
+            <div>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <input type="text" matInput formControlName="comments" class="form-control" required>
+                    <mat-label>Comments</mat-label>
+                    <mat-error *ngIf="taskForm.get('endDate').hasError('required')">
+                        You must enter a value
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="button">
+                <button type="submit" [mat-dialog-close] [disabled]="!taskForm.valid" class="btn btn-primary"
+                    style="background-color: aquamarine;" mat-button>Submit</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

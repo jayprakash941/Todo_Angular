@@ -1,0 +1,50 @@
+<!-- <div style="height: 80vh;">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Responsive Navigation</span>
+        <span class="menu-spacer"></span>
+        <div fxShow="true" fxHide.lt-md>
+          <a href="#" mat-button>Menu Item 1</a>
+          <a href="#" mat-button>Menu Item 2</a>
+          <a href="#" mat-button>Menu Item 3</a>
+          <a href="#" mat-button>Menu Item 4</a>
+          <a href="#" mat-button>Menu Item 5</a>
+          <a href="#" mat-button>Menu Item 6</a>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  
+    <mat-sidenav-container fxFlexFill>
+      <mat-sidenav #sidenav>
+        <mat-nav-list>
+          <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+          <a href="#" mat-list-item>Menu Item 1</a>
+          <a href="#" mat-list-item>Menu Item 2</a>
+          <a href="#" mat-list-item>Menu Item 3</a>
+          <a href="#" mat-list-item>Menu Item 4</a>
+          <a href="#" mat-list-item>Menu Item 5</a>
+          <a href="#"mat-list-item>Menu Item 6</a>
+        </mat-nav-list>
+      </mat-sidenav>
+    </mat-sidenav-container>
+  </div>
+   -->
+<mat-toolbar color="primary" style="text-align: right;">
+  <span *ngIf="isloggedIn; then ifBlock else elseBlock">{{ loggedInUser.data.name }}</span>
+</mat-toolbar>
+
+<ng-template #ifBlock>
+  <button (click)="headerBtnClk('home')" mat-button>{{ loggedInUser?.data.name }} </button>
+  <span style="margin-right: 7px;flex-grow: 1;"></span>
+  <button (click)="headerBtnClk('logout')" mat-button> Logout </button>
+</ng-template>
+
+<ng-template #elseBlock>
+  <button (click)="headerBtnClk('home')" mat-button> Home </button>
+  <span style="margin-right: 7px;flex-grow: 1;"></span>
+  <button (click)="headerBtnClk('login')" mat-button> Login </button>
+  <button (click)="headerBtnClk('register')" mat-button> Register </button>
+</ng-template>
